@@ -11,7 +11,7 @@
 Summary:       Package that installs %scl
 Name:          %scl_name
 Version:       4.1
-Release:       2%{?dist}
+Release:       3.bs1%{?dist}
 License:       GPLv2+
 Group: Applications/File
 Source0: README
@@ -115,6 +115,7 @@ mkdir -p %{buildroot}%{_mandir}/man7/
 mkdir -p %{buildroot}%{_mandir}/man8/
 mkdir -p %{buildroot}%{_libdir}/pkgconfig/
 mkdir -p %{buildroot}%{_datadir}/aclocal/
+mkdir -p %{buildroot}%{_datadir}/licenses/
 install -m 644 README.7 %{buildroot}%{_mandir}/man7/%{scl_name}.7
 
 %scl_install
@@ -159,6 +160,7 @@ selinuxenabled && load_policy || :
 %dir %{_mandir}/man8
 %dir %{_libdir}/pkgconfig
 %dir %{_datadir}/aclocal
+%dir %{_datadir}/licenses
 %{_mandir}/man7/%{scl_name}.*
 %attr(0755,root,root) %{?_scl_scripts}/register
 %attr(0755,root,root) %{?_scl_scripts}/deregister
@@ -175,6 +177,9 @@ selinuxenabled && load_policy || :
 %{_root_sysconfdir}/rpm/macros.%{scl_name_base}-scldevel
 
 %changelog
+* Tue Oct 23 2018 Luboš Uhliarik <luhliari@redhat.com> - 4.1-3
+- varnish6 doesn't own /opt/rh/rh-varnish6/root/usr/share/licenses (#1608952)
+
 * Wed Jul 18 2018 Luboš Uhliarik <luhliari@redhat.com> - 4.1-2
 - update for Varnish 6 (#1588045)
 
